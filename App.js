@@ -8,18 +8,20 @@ export default function App() {
   const toggleSwitch = () => setDarkMode((previousState) => !previousState);
   return (
     <View style={darkMode ? styles.darkMode : styles.lightMode}>
-      <Text style={darkMode ? styles.darkModeFont : styles.lightModeFont}>
+      <Text
+        style={darkMode ? styles.darkModeFontTitle : styles.lightModeFontTitle}
+      >
         Alcometer
       </Text>
-      <Text style={styles.icon}>🌙</Text>
+
       <Switch
         style={styles.darkModeSwitch}
         onValueChange={toggleSwitch}
         value={darkMode}
       />
-      <Calculator styles={styles} />
+
       <View style={styles.container}>
-        <StatusBar style="auto" />
+        <Calculator styles={styles} darkMode={darkMode} />
       </View>
     </View>
   );
@@ -27,17 +29,12 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
 
   title: {
     textAlign: "center",
-    fontSize: "25px",
-  },
-  darkModeSwitch: {
-    alignSelf: "end",
   },
   darkMode: {
     backgroundColor: "black",
@@ -45,13 +42,23 @@ const styles = StyleSheet.create({
   lightMode: {
     backgroundColor: "white",
   },
+
+  darkModeFontTitle: {
+    color: "white",
+    textAlign: "center",
+    marginTop: 25,
+    fontSize: 25,
+  },
+  lightModeFontTitle: {
+    color: "black",
+    textAlign: "center",
+    marginTop: 25,
+    fontSize: 25,
+  },
   darkModeFont: {
     color: "white",
   },
   lightModeFont: {
     color: "black",
-  },
-  icon: {
-    alignSelf: "end",
   },
 });
