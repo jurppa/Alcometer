@@ -16,7 +16,7 @@ const resultStyles = StyleSheet.create({
   },
 
   resultText: {
-    fontSize: 30,
+    fontSize: 35,
     color: "green",
     padding: 24,
     backgroundColor: "orange",
