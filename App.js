@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Switch, Text, View } from "react-native";
 import Calculator from "./components/Calculator";
+import Separator from "./components/UI/Separator";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -14,11 +15,8 @@ export default function App() {
         Alcometer
       </Text>
 
-      <Switch
-        style={styles.darkModeSwitch}
-        onValueChange={toggleSwitch}
-        value={darkMode}
-      />
+      <Separator />
+      <Switch onValueChange={toggleSwitch} value={darkMode} />
 
       <View style={styles.container}>
         <Calculator styles={styles} darkMode={darkMode} />
@@ -38,27 +36,32 @@ const styles = StyleSheet.create({
   },
   darkMode: {
     backgroundColor: "black",
+    height: "100%",
+    justifyContent: "center",
   },
   lightMode: {
     backgroundColor: "white",
+    height: "100%",
+
+    justifyContent: "center",
   },
 
   darkModeFontTitle: {
     color: "white",
     textAlign: "center",
-    marginTop: 25,
     fontSize: 25,
   },
   lightModeFontTitle: {
     color: "black",
     textAlign: "center",
-    marginTop: 25,
     fontSize: 25,
   },
   darkModeFont: {
     color: "white",
+    fontSize: 17,
   },
   lightModeFont: {
     color: "black",
+    fontSize: 17,
   },
 });
