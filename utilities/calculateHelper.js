@@ -23,8 +23,8 @@ export const calculateBloodAlcoholLevel = (bottles, weight, time, gender) => {
   }
 };
 export const validateInput = (bottles, weight, time, gender) => {
-  const weight = isNaN(weight) ? "Weight not valid" : "";
-  const bottles = isNaN(bottles) ? "Bottles not valid" : "";
-  const hours = isNaN(time) ? "Hours not valid" : "";
-  const gender = isNaN(gender) ? "Gender not valid" : "";
+  const weightValidated = isNaN(weight) ? "Weight not valid" : "";
+  const bottlesValidated = isNaN(bottles) ? "Bottles not valid" : "";
+  const hoursValidated = isNaN(time) ? "Hours not valid" : "";
+  const genderValidated = isNaN(gender) ? "Gender not valid" : "";
 };

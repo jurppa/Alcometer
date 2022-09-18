@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text } from "react-native";
+import { resultStyles } from "./Result.component.styles";
 
 const Result = ({ result = "default" }) => {
   return (
@@ -10,19 +11,4 @@ const Result = ({ result = "default" }) => {
   );
 };
 
-const resultStyles = StyleSheet.create({
-  resultContainer: {
-    marginTop: 70,
-  },
-
-  resultText: {
-    fontSize: 35,
-    color: "green",
-    padding: 24,
-    backgroundColor: "orange",
-    borderRadius: 10,
-
-    textAlign: "center",
-  },
-});
 export default Result;

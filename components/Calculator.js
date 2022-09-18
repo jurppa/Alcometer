@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
 import { calculateBloodAlcoholLevel } from "../utilities/calculateHelper";
+import { calculatorStyles } from "./Calculator.component.styles";
 import Result from "./Result";
 import Separator from "./UI/Separator";
 
@@ -17,7 +18,6 @@ const Calculator = ({ styles, darkMode }) => {
     { label: "👨  ", value: 0 },
     { label: "👩", value: 1 },
   ];
-  console.log(weight);
 
   const handleCalculate = () => {
     // if (isNaN(weight)) {
@@ -35,22 +35,34 @@ const Calculator = ({ styles, darkMode }) => {
         <Text style={darkMode ? styles.darkModeFont : styles.lightModeFont}>
           Weight
         </Text>
-        <TextInput onChangeText={setWeight} value={weight} />
+        <TextInput
+          onChangeText={setWeight}
+          value={weight}
+          style={darkMode ? styles.darkModeFont : styles.lightModeFont}
+        />
       </View>
-      <View style={calculatorStyles.input}>
+      <View style={styles.input}>
         <Text style={darkMode ? styles.darkModeFont : styles.lightModeFont}>
           Bottles
         </Text>
-        <TextInput onChangeText={setBottles} value={bottles} />
+        <TextInput
+          onChangeText={setBottles}
+          value={bottles}
+          style={darkMode ? styles.darkModeFont : styles.lightModeFont}
+        />
       </View>
-      <View style={calculatorStyles.input}>
+      <View style={styles.input}>
         <Text style={darkMode ? styles.darkModeFont : styles.lightModeFont}>
           Hours
         </Text>
 
-        <TextInput onChangeText={setHours} value={hours} />
+        <TextInput
+          onChangeText={setHours}
+          value={hours}
+          style={darkMode ? styles.darkModeFont : styles.lightModeFont}
+        />
       </View>
-      <View style={calculatorStyles.radioForm}>
+      <View style={styles.radioForm}>
         <Text style={darkMode ? styles.darkModeFont : styles.lightModeFont}>
           Gender
         </Text>
@@ -64,18 +76,11 @@ const Calculator = ({ styles, darkMode }) => {
         />
       </View>
       <Button onPress={handleCalculate} title="Calculate"></Button>
-      <Text style={calculatorStyles.error}>{error}</Text>
+      <Text style={styles.error}>{error}</Text>
 
       <Result darkMode={darkMode} result={result} />
     </View>
   );
 };
-const calculatorStyles = StyleSheet.create({
-  radioForm: { marginTop: 30 },
-  input: { marginTop: 35 },
-  error: {
-    fontSize: 20,
-    color: "orange",
-  },
-});
+
 export default Calculator;
