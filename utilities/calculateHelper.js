@@ -17,14 +17,31 @@ export const calculateBloodAlcoholLevel = (bottles, weight, time, gender) => {
     const result =
       gender === 0 ? gramsLeft / (weight * 0.7) : gramsLeft / (weight * 0.6);
     console.log(`result is ${result} and gender is ${gender}`);
-    return result;
+    return result > 0 ? result : 0;
   } catch {
     return "Error, please validate input.";
   }
 };
 export const validateInput = (bottles, weight, time, gender) => {
-  const weightValidated = isNaN(weight) ? "Weight not valid" : "";
-  const bottlesValidated = isNaN(bottles) ? "Bottles not valid" : "";
-  const hoursValidated = isNaN(time) ? "Hours not valid" : "";
-  const genderValidated = isNaN(gender) ? "Gender not valid" : "";
+  let errorStrings = [];
+
+  if (isNaN(weight) || !weight) {
+    errorStrings.push("Weight not valid");
+    return errorStrings;
+  }
+  if (isNaN(bottles) || !bottles) {
+    errorStrings.push("Bottles not valid");
+    return errorStrings;
+  }
+
+  if (isNaN(time) || !time) {
+    errorStrings.push("Hours not valid");
+    return errorStrings;
+  }
+  if (isNaN(gender)) {
+    errorStrings.push("Gender not valid");
+    return errorStrings;
+  }
+
+  return errorStrings;
 };

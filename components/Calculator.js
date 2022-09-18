@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import RadioForm from "react-native-simple-radio-button";
-import { calculateBloodAlcoholLevel } from "../utilities/calculateHelper";
+import {
+  calculateBloodAlcoholLevel,
+  validateInput,
+} from "../utilities/calculateHelper";
 import { calculatorStyles } from "./Calculator.component.styles";
 import Result from "./Result";
+import Error from "./UI/Error";
 import Separator from "./UI/Separator";
 
 const Calculator = ({ styles, darkMode }) => {
@@ -20,14 +24,16 @@ const Calculator = ({ styles, darkMode }) => {
   ];
 
   const handleCalculate = () => {
-    // if (isNaN(weight)) {
-    //   setError("Weight input invalid.");
-    // }
+    setResult("");
 
-    const validateInput = "";
+    const errorStrings = validateInput(bottles, weight, hours, gender);
+    setError(errorStrings);
+
+    if (errorStrings.length > 0) {
+      return;
+    }
     const result = calculateBloodAlcoholLevel(bottles, weight, hours, gender);
     setResult(result);
-    console.log(gender);
   };
   return (
     <View>
@@ -76,8 +82,7 @@ const Calculator = ({ styles, darkMode }) => {
         />
       </View>
       <Button onPress={handleCalculate} title="Calculate"></Button>
-      <Text style={styles.error}>{error}</Text>
-
+      <Error errorStrings={error} />
       <Result darkMode={darkMode} result={result} />
     </View>
   );
